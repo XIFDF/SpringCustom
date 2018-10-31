@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- beans就是配置bean的实体类映射 -->
+<!--这里要注意的是，这里的bean是按照从上到下顺序进行创建     -->
+<!--如果顺序倒转，会造成userService中的userDAO无法成功注入，-->
+<!--因为要先创建userDao才能把userDao注入到userService中   -->
+<beans>
+    <bean id="userDao" className="com.xifdf.dao.impl.UserDaoImpl"></bean>
+    <bean id="userService" className="com.xifdf.service.impl.UserServiceImpl">
+        <!-- 向userservice中的userDao属性注入实例 -->
+        <property name="userDao" beanId="userDao"></property>
+    </bean>
+</beans>
