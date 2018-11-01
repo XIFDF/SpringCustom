@@ -5,8 +5,11 @@ import com.xifdf.dao.UserDao;
 
 public class UserDaoImpl implements UserDao {
 
-    private User user = new User(1, "admin", "testpassword");
+    private User user;
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public User getUser() {
         return this.user;

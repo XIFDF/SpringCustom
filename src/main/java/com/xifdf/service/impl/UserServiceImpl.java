@@ -14,7 +14,8 @@ public class UserServiceImpl implements UserService {
 
     public boolean login(User user) {
         User ackuser = userDao.getUser();
-        if(user.getUsername().equals("admin") && user.getPassword().equals("testpassword")) {
+        if(user.getUsername().equals(ackuser.getUsername())
+        && user.getPassword().equals(ackuser.getPassword())) {
             return true;
         }
         else return false;

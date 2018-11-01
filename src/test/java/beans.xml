@@ -4,7 +4,14 @@
 <!--如果顺序倒转，会造成userService中的userDAO无法成功注入，-->
 <!--因为要先创建userDao才能把userDao注入到userService中   -->
 <beans>
-    <bean id="userDao" className="com.xifdf.dao.impl.UserDaoImpl"></bean>
+    <bean id="user" className="com.xifdf.bean.User">
+        <property name="id" value = "111"></property>
+        <property name="username" value = "admin"></property>
+        <property name="password" value = "testpassword"></property>
+    </bean>
+    <bean id="userDao" className="com.xifdf.dao.impl.UserDaoImpl">
+        <property name="user" beanId="user"></property>
+    </bean>
     <bean id="userService" className="com.xifdf.service.impl.UserServiceImpl">
         <!-- 向userservice中的userDao属性注入实例 -->
         <property name="userDao" beanId="userDao"></property>
